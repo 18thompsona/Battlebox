@@ -1,6 +1,6 @@
 class Ship {
-    constructor(length, width) {
-        this.lenght = lenght;
+    constructor(length) {
+        this.length = length;
         this.destroyed = false;
         this.destroyedSpaces = 0;
     }

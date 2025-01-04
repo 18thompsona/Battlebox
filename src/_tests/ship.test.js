@@ -1,5 +1,6 @@
 const Ship = require('../ship');
 
-// test('adds 1 + 2 to equal 3', () => {
-//   expect(sum(1, 2)).toBe(3);
-// });
+test('Create Ship and check status', () => {
+    let ship = new Ship(3);
+    expect(ship.isSunk()).toBe(false);
+});
