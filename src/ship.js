@@ -1,17 +1,17 @@
 class Ship {
-    constructor(length) {
+    constructor(length,x,y) {
         this.length = length;
         this.destroyed = false;
         this.destroyedSpaces = 0;
     }
 
-    hit(){
+    Hit(){
         this.destroyedSpaces += 1;
-        this.isSunk();
+        this.IsSunk();
     }
 
-    isSunk(){
-        this.destroyed = (this.destroyedSpaces >= this.lenght) ? true : false;
+    IsSunk(){
+        this.destroyed = (this.destroyedSpaces >= this.length) ? true : false;
         return this.destroyed;
     }
 }

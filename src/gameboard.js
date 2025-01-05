@@ -10,9 +10,10 @@ class Gameboard {
 
     AddShip(x1, y1, size, axis_y, axis_x){
         if (this.CheckSpaces(y1, x1, size, axis_y, axis_x)){
-            this.ships.push(new Ship(size))
+            this.ships.push(new Ship(size));
+
             for (let i = 0; i < size; i++){
-                this.board[y1 + (i * axis_y)][x1 + (i * axis_x)] = 'S'
+                this.board[y1 + (i * axis_y)][x1 + (i * axis_x)] = 'S' + this.ships.length;
             }
         }
     }
@@ -36,11 +37,16 @@ class Gameboard {
             this.board[x][y] = 'o';
             return true;
         }
-        if (this.board[x][y] == 'S'){
+        if (this.board[x][y][0] == 'S'){
+            this.ships[this.board[x][y][1]-1].Hit();
             this.board[x][y] = 'o';
             return true;
         }
         return false;
+    }
+
+    CheckGameOver(){
+        return this.ships.every(ship => ship.IsSunk() === true);
     }
 
     TestPrint(){
