@@ -1,4 +1,4 @@
-const Gameboard = require('../gameboard');
+import Gameboard from "./gameboard";
 
 class Player {
     constructor(name, size) {
@@ -18,3 +18,5 @@ class Player {
         return this.board.CheckGameOver();
     }
 }
+
+module.exports = Player;

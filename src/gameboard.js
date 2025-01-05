@@ -8,7 +8,7 @@ class Gameboard {
         this.ships = [];
     }
 
-    AddShip(x1, y1, size, axis_y, axis_x){
+    AddShip(x1, y1, size, axis_x, axis_y){
         if (this.CheckSpaces(y1, x1, size, axis_y, axis_x)){
             this.ships.push(new Ship(size));
 
