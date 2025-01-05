@@ -7,10 +7,10 @@ class Player {
     }
 
     PlaceShip(x1, y1, size, axis_y, axis_x){
-        this.board.AddShip(x1, y1, size, axis_y, axis_x);
+        this.board.AddShip(x1, y1, size, axis_x, axis_y);
     }
 
-    Attack(x, y){
+    Attacked(x, y){
         this.board.ReceiveAttack(y, x);
     }
 
