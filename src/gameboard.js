@@ -1,6 +1,6 @@
-import Ship from "./ship";
+import Ship from './ship'
 
-class Gameboard {
+export default class Gameboard {
     constructor(length, width) {
         this.length = length;
         this.width = width;
@@ -15,17 +15,21 @@ class Gameboard {
             for (let i = 0; i < size; i++){
                 this.board[y1 + (i * axis_y)][x1 + (i * axis_x)] = 'S' + this.ships.length;
             }
+            return true;
         }
+        return false;
     }
 
     CheckSpaces(y1, x1, size, axis_y, axis_x){
-        if(y1 + (size * axis_y) > this.length || y1 + (size * axis_y) < 0 ||
-           x1 + (size * axis_x) > this.width  || x1 + (size * axis_x) < 0
+        if(y1 + ((size - 1) * axis_y) >= this.length ||
+           y1 + ((size - 1) * axis_y) < 0 ||
+           x1 + ((size - 1) * axis_x) >= this.width  ||
+           x1 + ((size - 1) * axis_x) < 0
         ){
             return false;
         }
         for (let i = 0; i < size; i++){
-            if(this.board[y1 + (i * axis_y)][x1 + (i * axis_x)] == 'S'){
+            if(this.board[y1 + (i * axis_y)][x1 + (i * axis_x)][0] == 'S'){
                 return false;
             }
         }
@@ -38,7 +42,7 @@ class Gameboard {
             return true;
         }
         if (this.board[x][y][0] == 'S'){
-            this.ships[this.board[x][y][1]-1].Hit();
+            this.ships[this.board[x][y][1] - 1].Hit();
             this.board[x][y] = 'o';
             return true;
         }
@@ -60,5 +64,3 @@ class Gameboard {
     }
     
 }
-
-module.exports = Gameboard;

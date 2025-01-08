@@ -1,4 +1,4 @@
-const Player = require('../player');
+import Player from '../player';
 
 test('Player Board is setup with empty spaces', () => {
     let player = new Player('test', 10);
@@ -63,4 +63,12 @@ test('Player loses when all ships are sunk', () => {
   expect(player.board.ships[0].IsSunk()).toBe(true);
   expect(player.board.ships[0].destroyedSpaces).toBe(5);
   expect(player.CheckLoss()).toBe(true);
+});
+
+test('Ships are generated Randomly', () => {
+  let player = new Player('test', 10);
+  let sizes = [5,4,3,2,1]
+  player.RandomShipPlacement(sizes);
+  player.board.TestPrint();
+  expect(player.board.ships.length).toBe(5);
 });
