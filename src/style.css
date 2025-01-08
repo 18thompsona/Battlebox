@@ -9,9 +9,20 @@ main{
     align-items: center;
 }
 
+.labels{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5em;
+}
+
 .boxes-groups{
     display: flex;
+    justify-content: center;
     gap: 3em;
+}
+
+.board-group{
+    text-align: center;
 }
 
 .box{

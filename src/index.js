@@ -18,10 +18,17 @@ function CreateBoard(parentElement, size){
     for(let i = 0; i < boardsize*boardsize;i++){
         const box = document.createElement('div');
         box.classList.add("box");
+        box.dataset.row = Math.floor(i / size);
+        box.dataset.col = i % size;
+
+        box.addEventListener("click", () => {
+            console.log(box.dataset.col, box.dataset.row);
+        })
 
         parentElement.appendChild(box);
     }
 }
+
 
 CreateBoard(playerBoard, boardsize);
 CreateBoard(computerBoard, boardsize);
