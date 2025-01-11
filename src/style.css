@@ -8,6 +8,10 @@ main{
     justify-content: center;
     align-items: center;
 }
+.placement-board{
+    /* width: 100vw;
+    height: 100vh; */
+}
 
 .labels{
     display: grid;
@@ -25,8 +29,12 @@ main{
     text-align: center;
 }
 
+.boxes{
+    border: 1px solid gray;
+}
+
 .box{
-    border: 1px solid #ccc;
+    border: 1px solid gray;
     width: 50px;    /* or some fixed size */
     height: 50px;
     box-sizing: border-box
@@ -34,4 +42,16 @@ main{
 
 .box:hover{
     border: 1px solid #ec2e2e;
+}
+
+.startgame-button{
+    margin-top: 1em;
+}
+
+.ship{
+    background-color: yellow;
+}
+
+.hit{
+    background-color: lightcoral;
 }

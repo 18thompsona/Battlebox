@@ -20,6 +20,10 @@ export default class Gameboard {
         return false;
     }
 
+    CheckShip(x1, y1){
+        return (this.board[y1][x1][0] == 'S');
+    }
+
     CheckSpaces(y1, x1, size, axis_y, axis_x){
         if(y1 + ((size - 1) * axis_y) >= this.length ||
            y1 + ((size - 1) * axis_y) < 0 ||

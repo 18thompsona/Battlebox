@@ -14,6 +14,10 @@ export default class Player {
         this.board.ReceiveAttack(y, x);
     }
 
+    CheckShip(x, y){
+        return this.board.CheckShip(x, y);
+    }
+
     CheckLoss(){
         return this.board.CheckGameOver();
     }
@@ -50,5 +54,9 @@ export default class Player {
             y = Math.floor(Math.random()*this.board.length);
             good = this.Attacked(x, y);
         }
+    }
+
+    PrintBoard(){
+        this.board.TestPrint();
     }
 }
