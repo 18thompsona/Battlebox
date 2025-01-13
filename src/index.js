@@ -78,12 +78,25 @@ function CreateSetupBoard(parentElement, size, player){
         box.dataset.row = Math.floor(i / size);
         box.dataset.col = i % size;
 
+        box.addEventListener("mouseover", () => {
+            const x = Number(box.dataset.col);
+            const y = Number(box.dataset.row);
+            highlightPreview(parentElement, player, x, y, shipSizes[shipIndex], axisY, axisX, true);
+        });
+  
+        box.addEventListener("mouseout", () => {
+            const x = Number(box.dataset.col);
+            const y = Number(box.dataset.row);
+            highlightPreview(parentElement, player, x, y, shipSizes[shipIndex] + 1, axisY, axisX, false);
+        });
+
         box.addEventListener("click", () => {
-            let x = Number(box.dataset.col);
-            let y = Number(box.dataset.row);
+            const x = Number(box.dataset.col);
+            const y = Number(box.dataset.row);
             if(shipIndex <= shipSizes.length){
                 let valid = player.PlaceShip(x, y, shipSizes[shipIndex], axisY, axisX);
                 if(valid){
+                    highlightPreview(parentElement, player, x, y, shipSizes[shipIndex] + 1, axisY, axisX, false);
                     shipIndex += 1;
                     ShowShips(parentElement, player);                    
                 }
@@ -121,6 +134,9 @@ function ShowShips(board, player){
         if(player.CheckShip(Number(child.dataset.col), Number(child.dataset.row))){
             child.classList.add("ship");
         }
+        else{
+            child.classList = "box"
+        }
     }
 }
 
@@ -144,6 +160,32 @@ function ToggleRotation(){
     else{
         axisX = 1;
         axisY = 0;
+    }
+}
+
+function highlightPreview(parentElement, player, x, y, size, axisY, axisX, shouldHighlight) {
+    const isValid = player.board.CheckSpaces(y, x, size, axisY, axisX);
+  
+    for (let i = 0; i < size; i++) {
+        const cellX = x + i * axisX;
+        const cellY = y + i * axisY;
+
+        const cell = parentElement.querySelector(`.box[data-row="${cellY}"][data-col="${cellX}"]`);
+
+        if (!cell) continue;
+
+        if (shouldHighlight) {
+            if (isValid) {
+                cell.classList.add("highlight-valid");
+            } 
+            else {
+                cell.classList.add("highlight-invalid");
+            }
+        } 
+        else {
+            cell.classList.remove("highlight-valid");
+            cell.classList.remove("highlight-invalid");
+        }
     }
 }
 

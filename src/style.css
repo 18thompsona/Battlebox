@@ -63,3 +63,11 @@ main{
 .hit-ship{
     background-color: lightcoral;
 }
+
+.highlight-valid{
+    background-color: lightgreen;
+}
+  
+.highlight-invalid{
+    background-color: lightcoral;
+}
