@@ -13,6 +13,10 @@ main{
     height: 100vh; */
 }
 
+.toggleRotate-button{
+    margin-bottom: 1em;
+}
+
 .labels{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -52,6 +56,10 @@ main{
     background-color: yellow;
 }
 
-.hit{
+.hit-water{
+    background-color: lightblue;
+}
+
+.hit-ship{
     background-color: lightcoral;
 }

@@ -51,7 +51,7 @@ test('Ship is able to be hit', () => {
   let mockboard = new Gameboard(10, 10);
   mockboard.AddShip(0,0,5,1,0)
   mockboard.ReceiveAttack(0,0);
-  expect(mockboard.board[0][0]).toBe('o');
+  expect(mockboard.board[0][0]).toBe('s');
   expect(mockboard.ships[0].destroyedSpaces).toBe(1);
 });
 

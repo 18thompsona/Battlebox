@@ -24,6 +24,10 @@ export default class Gameboard {
         return (this.board[y1][x1][0] == 'S');
     }
 
+    CheckSpace(x, y){
+        return this.board[y][x][0];
+    }
+
     CheckSpaces(y1, x1, size, axis_y, axis_x){
         if(y1 + ((size - 1) * axis_y) >= this.length ||
            y1 + ((size - 1) * axis_y) < 0 ||
@@ -47,7 +51,7 @@ export default class Gameboard {
         }
         if (this.board[x][y][0] == 'S'){
             this.ships[this.board[x][y][1] - 1].Hit();
-            this.board[x][y] = 'o';
+            this.board[x][y] = 's';
             return true;
         }
         return false;

@@ -11,11 +11,15 @@ export default class Player {
     }
 
     Attacked(x, y){
-        this.board.ReceiveAttack(y, x);
+        return this.board.ReceiveAttack(y, x);
     }
 
     CheckShip(x, y){
         return this.board.CheckShip(x, y);
+    }
+
+    CheckSpace(x, y){
+        return this.board.CheckSpace(x, y);
     }
 
     CheckLoss(){
